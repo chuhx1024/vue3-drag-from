@@ -11,6 +11,36 @@
     }
     &-left {
         left: 0;
+        &-item {
+            width: 250px;
+            background-color: #fff;
+            margin: 20px auto;
+            height: 100px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            position: relative;
+            cursor: move;
+
+            &__label {
+                position: absolute;
+                left: 0;
+                top: 0;
+                background-color: #68b0a2;
+                line-height: 24px;
+            }
+            &::after {
+                content: '';
+                background-color: #ccc;
+                position: absolute;
+                left: 0;
+                right: 0;
+                top: 0;
+                bottom: 0;
+                opacity: 0.2;
+                z-index: 1000;
+            }
+        }
     }
     &-right {
         right: 0;

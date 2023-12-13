@@ -1,5 +1,4 @@
-import { defineComponent, computed } from 'vue'
-import { Button } from 'ant-design-vue'
+import { defineComponent, computed, inject } from 'vue'
 
 export default defineComponent({
     props: {
@@ -13,11 +12,8 @@ export default defineComponent({
             zIndex: props.zIndex,
             position: 'absolute',
         }))
-        return () => (
-            <div style={blockStyle.value}>
-                {props.block.top}
-                <Button>123</Button>
-            </div>
-        )
+        const { componentMap } = inject('config')
+        console.log(componentMap, 6766)
+        return () => <div style={blockStyle.value}>{componentMap[props.block.key].render()}</div>
     },
 })
