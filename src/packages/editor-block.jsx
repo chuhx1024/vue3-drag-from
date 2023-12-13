@@ -1,4 +1,5 @@
 import { defineComponent, computed } from 'vue'
+import { Button } from 'ant-design-vue'
 
 export default defineComponent({
     props: {
@@ -12,6 +13,11 @@ export default defineComponent({
             zIndex: props.zIndex,
             position: 'absolute',
         }))
-        return () => <div style={blockStyle.value}>{props.block.top}</div>
+        return () => (
+            <div style={blockStyle.value}>
+                {props.block.top}
+                <Button>123</Button>
+            </div>
+        )
     },
 })
