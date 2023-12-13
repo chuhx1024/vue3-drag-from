@@ -1,0 +1,35 @@
+{
+    // Place your aiplatform-frontend-vue workspace snippets here. Each snippet is defined under a snippet name and has a scope, prefix, body and
+    // description. Add comma separated ids of the languages where the snippet is applicable in the scope field. If scope
+    // is left empty or omitted, the snippet gets applied to all languages. The prefix is what is
+    // used to trigger the snippet and the body will be expanded and inserted. Possible variables are:
+    // $1, $2 for tab stops, $0 for the final cursor position, and ${1:label}, ${2:another} for placeholders.
+    // Placeholders with the same ids are connected.
+    // snippet 模板在线转换: https://snippet-generator.app/?description=&tabtrigger=&snippet=&mode=vscode
+    // Example:
+    "Print to console": {
+        "scope": "javascript,typescript",
+        "prefix": "log",
+        "body": ["console.log('$1');", "$2"],
+        "description": "Log output to console"
+    },
+    "vue3": {
+        "prefix": "v3",
+        "body": [
+            "<template>",
+            "    <div class=\"${1:${TM_FILENAME_BASE}}-container\">",
+            "        $1",
+            "    </div>",
+            "</template>",
+            "<script setup lang=\"ts\">",
+            "</script>",
+            "<style lang='scss' scoped>",
+            ".$1-container {",
+            "    color: purple;",
+            "}",
+            "</style>",
+            ""
+        ],
+        "description": ""
+    }
+}
