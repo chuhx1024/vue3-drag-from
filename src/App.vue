@@ -1,6 +1,6 @@
 <template>
     <div class="app">
-        <Editor>33 </Editor>
+        <Editor v-model="state">33 </Editor>
     </div>
 </template>
 <script setup lang="ts">
