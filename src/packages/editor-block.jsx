@@ -1,4 +1,4 @@
-import { defineComponent, computed, inject } from 'vue'
+import { defineComponent, computed, inject, onMounted, ref } from 'vue'
 
 export default defineComponent({
     props: {
@@ -13,7 +13,21 @@ export default defineComponent({
             position: 'absolute',
         }))
         const { componentMap } = inject('config')
-        console.log(componentMap, 6766)
-        return () => <div style={blockStyle.value}>{componentMap[props.block.key].render()}</div>
+
+        const editorBlock = ref(null)
+        onMounted(() => {
+            let { offsetWidth, offsetHeight } = editorBlock.value
+            if (props.block.alignCenter) {
+                props.block.top -= offsetHeight / 2
+                props.block.left -= offsetWidth / 2
+                props.block.alignCenter = false
+            }
+        })
+
+        return () => (
+            <div ref={editorBlock} style={blockStyle.value}>
+                {componentMap[props.block.key].render()}
+            </div>
+        )
     },
 })
