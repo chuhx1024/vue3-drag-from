@@ -15,7 +15,24 @@ export default defineComponent({
 
         // 获取画布
         const containerRef = ref(null)
+        // 1. 实现左侧菜单拖拽功能
         const { dragStart, dragEnd } = menuDrag(data, containerRef)
+        // 2. 实现获取焦点
+        const blockMouseDown = (e, block) => {
+            e.preventDefault()
+            e.stopPropagation()
+
+            if (!block.focus) {
+                if (!e.shiftKey) {
+                    data.value.blocks.forEach((item) => {
+                        item.focus = false
+                    })
+                }
+                block.focus = true
+            } else {
+                block.focus = false
+            }
+        }
         return () => (
             <div class="editor">
                 <div class="editor-left">
@@ -41,7 +58,13 @@ export default defineComponent({
                             style={data.value.container}
                         >
                             {data.value.blocks.map((item) => (
-                                <EditorBlock block={item}></EditorBlock>
+                                <EditorBlock
+                                    class={item.focus ? 'editor-block-focus' : ''}
+                                    onMousedown={(e) => {
+                                        blockMouseDown(e, item)
+                                    }}
+                                    block={item}
+                                ></EditorBlock>
                             ))}
                         </div>
                     </div>

@@ -5,7 +5,7 @@
     &-right {
         position: absolute;
         width: 270px;
-        background-color: red;
+        // background-color: red;
         top: 0;
         bottom: 0;
     }
@@ -50,22 +50,36 @@
         right: 280px;
         left: 280px;
         height: 80px;
-        background-color: blue;
+        // background-color: blue;
     }
 
     &-container {
         padding: 80px 270px 0;
-        background-color: pink;
+        // background-color: pink;
         height: 100%;
         box-sizing: border-box;
 
         &-canvas {
-            overflow: scroll;
+            overflow: auto;
             height: 100%;
             &__content {
                 margin: 20px auto;
                 position: relative;
                 background-color: yellow;
+
+                .editor-block-focus {
+                    &::after {
+                        content: '';
+                        position: absolute;
+                        background-color: rgba($color: #ccc, $alpha: 0.2);
+                        left: 0;
+                        right: 0;
+                        top: 0;
+                        bottom: 0;
+                        z-index: 1000;
+                        border: 3px dashed red;
+                    }
+                }
             }
         }
     }
